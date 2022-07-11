@@ -42,10 +42,10 @@ jobs:
     # Define the steps to run:
     steps:
 
-      # Wait a minute:
-      - name: 'Wait a minute'
+      # Wait three minutes:
+      - name: 'Wait three minutes'
         run: |
-          sleep 60s
+          sleep 3m
 
   # Define job to publish bundle tags to GitHub...
   create-tags:
@@ -65,9 +65,10 @@ jobs:
       # Wait for the productionize workflow to succeed:
       - name: 'Wait for productionize workflow to succeed'
         uses: lewagon/wait-on-check-action@v1.0.0
+        timeout-minutes: 5
         with:
           ref: main
-          check-name: 'Productionize status'
+          check-regexp: 'Productionize'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 60
           allowed-conclusions: success
@@ -88,15 +89,37 @@ jobs:
         run: |
           SLUG=${{ github.repository }}
           VERSION=$(echo ${{ github.ref }} | sed -E -n 's/refs\/tags\/?(v[0-9]+.[0-9]+.[0-9]+).*/\1/p')
+          ESCAPED=$(echo $SLUG | sed -E 's/\//\\\//g')
 
           git checkout -b deno origin/deno
+          sed -i -E "s/$ESCAPED@deno/$ESCAPED@$VERSION-deno/g" README.md
+          git add README.md
+          git commit -m "Update README.md for Deno bundle $VERSION"
           git tag -a $VERSION-deno -m "$VERSION-deno"
           git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$SLUG.git" $VERSION-deno
+          sed -i -E "s/$ESCAPED@$VERSION-deno/$ESCAPED@deno/g" README.md
+          git add README.md
+          git commit -m "Revert changes to README.md for Deno bundle $VERSION"
+          git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$SLUG.git" deno
 
           git checkout -b umd origin/umd
+          sed -i -E "s/$ESCAPED@umd/$ESCAPED@$VERSION-umd/g" README.md
+          git add README.md
+          git commit -m "Update README.md for UMD bundle $VERSION"
           git tag -a $VERSION-umd -m "$VERSION-umd"
           git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$SLUG.git" $VERSION-umd
+          sed -i -E "s/$ESCAPED@$VERSION-umd/$ESCAPED@umd/g" README.md
+          git add README.md
+          git commit -m "Revert changes to README.md for UMD bundle $VERSION"
+          git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$SLUG.git" umd
 
           git checkout -b esm origin/esm
+          sed -i -E "s/$ESCAPED@esm/$ESCAPED@$VERSION-esm/g" README.md
+          git add README.md
+          git commit -m "Update README.md for ESM bundle $VERSION"
           git tag -a $VERSION-esm -m "$VERSION-esm"
           git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$SLUG.git" $VERSION-esm
+          sed -i -E "s/$ESCAPED@$VERSION-esm/$ESCAPED@esm/g" README.md
+          git add README.md
+          git commit -m "Revert changes to README.md for ESM bundle $VERSION"
+          git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$SLUG.git" esm

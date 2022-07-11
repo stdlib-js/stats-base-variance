@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/stats-base-variance",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Calculate the variance of a strided array.",
   "license": "Apache-2.0",
   "author": {

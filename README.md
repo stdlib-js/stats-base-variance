@@ -217,7 +217,7 @@ var v = variance.ndarray( N, 1, x, 2, 1 );
 
 -   If `N <= 0`, both functions return `NaN`.
 -   If `N - c` is less than or equal to `0` (where `c` corresponds to the provided degrees of freedom adjustment), both functions return `NaN`.
--   Depending on the environment, the typed versions ([`dvariance`][@stdlib/stats/strided/dvariance], [`svariance`][@stdlib/stats/base/svariance], etc.) are likely to be significantly more performant.
+-   Depending on the environment, the typed versions ([`dvariance`][@stdlib/stats/strided/dvariance], [`svariance`][@stdlib/stats/strided/svariance], etc.) are likely to be significantly more performant.
 
 </section>
 
@@ -269,7 +269,7 @@ console.log( v );
 -   <span class="package-name">[`@stdlib/stats-strided/dvariance`][@stdlib/stats/strided/dvariance]</span><span class="delimiter">: </span><span class="description">calculate the variance of a double-precision floating-point strided array.</span>
 -   <span class="package-name">[`@stdlib/stats-base/nanvariance`][@stdlib/stats/base/nanvariance]</span><span class="delimiter">: </span><span class="description">calculate the variance of a strided array ignoring NaN values.</span>
 -   <span class="package-name">[`@stdlib/stats-base/stdev`][@stdlib/stats/base/stdev]</span><span class="delimiter">: </span><span class="description">calculate the standard deviation of a strided array.</span>
--   <span class="package-name">[`@stdlib/stats-base/svariance`][@stdlib/stats/base/svariance]</span><span class="delimiter">: </span><span class="description">calculate the variance of a single-precision floating-point strided array.</span>
+-   <span class="package-name">[`@stdlib/stats-strided/svariance`][@stdlib/stats/strided/svariance]</span><span class="delimiter">: </span><span class="description">calculate the variance of a single-precision floating-point strided array.</span>
 
 </section>
 
@@ -361,7 +361,7 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 [@stdlib/stats/base/stdev]: https://github.com/stdlib-js/stats-base-stdev
 
-[@stdlib/stats/base/svariance]: https://github.com/stdlib-js/stats-base-svariance
+[@stdlib/stats/strided/svariance]: https://github.com/stdlib-js/stats-strided-svariance
 
 <!-- </related-links> -->
 

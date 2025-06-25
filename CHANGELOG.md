@@ -4,7 +4,29 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2025-06-21)
+## Unreleased (2025-06-25)
+
+<section class="features">
+
+### Features
+
+-   [`3efb3a8`](https://github.com/stdlib-js/stdlib/commit/3efb3a803162fd01eef6f5b1f10bf972a6734a72) - add support for accessor arrays and refactor `stats/base/variance` [(#7481)](https://github.com/stdlib-js/stdlib/pull/7481)
+
+</section>
+
+<!-- /.features -->
+
+<section class="issues">
+
+### Closed Issues
+
+This release closes the following issue:
+
+[#5687](https://github.com/stdlib-js/stdlib/issues/5687)
+
+</section>
+
+<!-- /.issues -->
 
 <section class="commits">
 
@@ -12,6 +34,7 @@
 
 <details>
 
+-   [`3efb3a8`](https://github.com/stdlib-js/stdlib/commit/3efb3a803162fd01eef6f5b1f10bf972a6734a72) - **feat:** add support for accessor arrays and refactor `stats/base/variance` [(#7481)](https://github.com/stdlib-js/stdlib/pull/7481) _(by Gururaj Gurram)_
 -   [`9482ada`](https://github.com/stdlib-js/stdlib/commit/9482adac1b21fa0ea2784fce177da803c647e8bb) - **refactor:** update paths _(by Gururaj Gurram)_
 -   [`e61abc7`](https://github.com/stdlib-js/stdlib/commit/e61abc75775756383a20985c7166f85149ee0b68) - **refactor:** update paths _(by Aayush Khanna)_
 
